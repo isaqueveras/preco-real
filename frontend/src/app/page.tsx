@@ -1,7 +1,7 @@
 import { Card, Text, Container, Link as ChakraLink, Heading, Table, Grid, GridItem, Box, Span } from "@chakra-ui/react"
 import NextLink from "next/link"
 
-import { LuCalendarDays, LuDices, LuExternalLink, LuNewspaper } from "react-icons/lu";
+import { LuCalendarDays, LuDices, LuExternalLink, LuMoveDown, LuNewspaper } from "react-icons/lu";
 
 const items = [
   { id: 1, name: "Arroz (5kg)", category: "Alimentos", price: 25, min: 20, max: 30 },
@@ -37,11 +37,11 @@ export default function Home() {
   return (
     <>
       <Box>
-        <Box height={1} bg={'green.400'} w={'100vw'} />
-        <Box height={1} bg={'yellow'} w={'100vw'} />
-        <Box height={1} bg={'blue.600'} w={'100vw'} />
+        <Box height={1} bg={{ base: 'green.400', _dark: 'green.600' }} w={'100vw'} />
+        <Box height={1} bg={{ base: 'yellow', _dark: 'yellow.300' }} w={'100vw'} />
+        <Box height={1} bg={{ base: 'blue.600', _dark: 'blue.700' }} w={'100vw'} />
       </Box>
-      <Container px="16">
+      <Container px="16" colorPalette={'pink'}>
         <Box
           my={3}
           display={'flex'}
@@ -73,11 +73,10 @@ export default function Home() {
         </Box>
 
         <Grid templateColumns="repeat(5, 1fr)" gap={2}>
-          <GridItem colSpan={2}>
+          <GridItem colSpan={1}>
             {news.map((item) => (
               <Card.Root
-                colorPalette={'pink'}
-                width="100%"
+                width="350px"
                 rounded={'none'}
                 borderBottom={'none'}
                 key={item.id}
@@ -108,20 +107,20 @@ export default function Home() {
             ))}
           </GridItem>
 
-          <GridItem colSpan={3}>
+          <GridItem colSpan={4}>
             <Table.ScrollArea
               rounded="none"
-              // border={'none'}
-              // borderTop="1px solid #27272a"
-              maxH={719}>
+              border={'none'}
+              maxH={719}
+            >
               <Table.Root size="sm" stickyHeader interactive>
                 <Table.Header>
-                  <Table.Row bg="bg.emphasized">
-                    <Table.ColumnHeader>Nome</Table.ColumnHeader>
+                  <Table.Row bg="bg.muted">
+                    <Table.ColumnHeader>Produto</Table.ColumnHeader>
                     <Table.ColumnHeader>Categoria</Table.ColumnHeader>
                     <Table.ColumnHeader>Preço</Table.ColumnHeader>
-                    <Table.ColumnHeader textAlign="end">Minimo</Table.ColumnHeader>
-                    <Table.ColumnHeader textAlign="left">Maximo</Table.ColumnHeader>
+                    <Table.ColumnHeader textAlign="end">Min</Table.ColumnHeader>
+                    <Table.ColumnHeader textAlign="left">Max</Table.ColumnHeader>
                   </Table.Row>
                 </Table.Header>
 
