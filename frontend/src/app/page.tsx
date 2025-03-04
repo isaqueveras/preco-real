@@ -1,15 +1,12 @@
 import NextLink from "next/link"
 import {
   Card,
-  Text,
   Container,
   Link as ChakraLink,
   Heading,
   Table,
   Grid,
   GridItem,
-  Box,
-  Span,
   TimelineRoot,
   TimelineConnector,
   TimelineContent,
@@ -18,14 +15,13 @@ import {
   TimelineItem
 } from "@chakra-ui/react"
 import {
-  LuCalendarDays,
-  LuDices,
   LuExternalLink,
   LuPackage,
   LuPackageCheck,
   LuPackagePlus,
   LuPackageX,
 } from "react-icons/lu";
+import Menu from "@/components/menu";
 
 const items = [
   { id: 1, name: "Arroz (5kg)", category: "Alimentos", price: 25, min: 20, max: 30 },
@@ -53,54 +49,20 @@ const items = [
 const news = [
   { id: 1, title: "Tomate tem alta de 15% no mês de fevereiro", category: "Notícia", content: "O preço do tomate subiu devido à alta demanda e às condições climáticas desfavoráveis." },
   { id: 2, title: "Leite fica mais barato com aumento da produção", category: "Notícia", content: "A produção de leite cresceu 8%, resultando em uma leve queda nos preços." },
-  { id: 3, title: "Feijão tem queda de preço após safra recorde", category: "Notícia", content: "A colheita deste ano superou expectativas, reduzindo os custos do feijão nos mercados." },
-  { id: 4, title: "Consumo de café cresce 10% no último ano", category: "Notícia", content: "A colheita deste ano superou expectativas, reduzindo os custos do feijão nos mercados." }
+  { id: 3, title: "Feijão tem queda de preço após safra recorde", category: "Notícia", content: "A colheita deste ano superou expectativas, reduzindo os custos do feijão nos mercados." }
+  // { id: 4, title: "Consumo de café cresce 10% no último ano", category: "Notícia", content: "A colheita deste ano superou expectativas, reduzindo os custos do feijão nos mercados." }
 ]
 
 export default function Home() {
   return (
     <>
-      <Box>
-        <Box height={1} bg={{ base: 'green.400', _dark: 'green.600' }} w={'100vw'} />
-        <Box height={1} bg={{ base: 'yellow', _dark: 'yellow.300' }} w={'100vw'} />
-        <Box height={1} bg={{ base: 'blue.600', _dark: 'blue.700' }} w={'100vw'} />
-      </Box>
+      <Menu />
       <Container px="16" colorPalette={'pink'}>
-        <Box
-          my={3}
-          display={'flex'}
-          justifyContent={'space-between'}
-          alignItems={'center'}
-        >
-          <Box>
-            <Heading
-              color={{ base: 'pink.600', _dark: 'pink.400' }}
-              display={'flex'}
-              justifyItems={'center'}
-              alignItems={'center'}
-            >
-              <Span mr={2}><LuDices size={28} /></Span> Preço Real
-            </Heading>
-            <Text color={{ base: 'gray.400', _dark: 'gray.500' }}>Monitor de preços dos alimentos no Brasil</Text>
-          </Box>
-          <Box textAlign={'end'}>
-            <Heading fontSize={'md'} color={'gray.400'}
-              display={'flex'}
-              justifyItems={'center'}
-              alignItems={'center'}
-            >
-              <LuCalendarDays />
-              <Span ml={1}>03 de Março de 2025 · 20:19</Span>
-            </Heading>
-            <Text fontSize={'sm'} color={'gray.500'}>Ultima atualização</Text>
-          </Box>
-        </Box>
-
         <Grid templateColumns="repeat(5, 1fr)" gap={2}>
           <GridItem colSpan={1}>
             {news.map((item) => (
               <Card.Root
-                width="350px"
+                maxWidth="350px"
                 rounded={'none'}
                 borderBottom={'none'}
                 key={item.id}
@@ -109,14 +71,14 @@ export default function Home() {
                   _dark: { borderBottom: '1px solid #27272a' }
                 }}>
                 <Card.Body gap="2">
-                  <Card.Title>
+                  <Card.Title fontSize={'md'}>
                     <ChakraLink asChild variant="underline">
                       <NextLink href={`#noticia#${item.title}`}>
                         {item.title}
                       </NextLink>
                     </ChakraLink>
                   </Card.Title>
-                  <Card.Description>{item.content}</Card.Description>
+                  <Card.Description fontSize={'sm'}>{item.content}</Card.Description>
                   <Card.Footer p={0} fontSize={'sm'} color={'gray'}>
                     <ChakraLink asChild variant="underline">
                       <NextLink href={'#'}>
@@ -169,7 +131,7 @@ export default function Home() {
 
           <GridItem colSpan={1}>
             <Heading pl={3} mb={2} color={'gray'} display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
-              <NextLink href="#">Transações</NextLink>
+              <NextLink href="/tx">Transações</NextLink>
               <NextLink href="#"><LuPackagePlus /></NextLink>
             </Heading>
             <TimelineRoot maxW="350px" pl={3}>
