@@ -1,7 +1,31 @@
-import { Card, Text, Container, Link as ChakraLink, Heading, Table, Grid, GridItem, Box, Span } from "@chakra-ui/react"
 import NextLink from "next/link"
-
-import { LuCalendarDays, LuDices, LuExternalLink, LuMoveDown, LuNewspaper } from "react-icons/lu";
+import {
+  Card,
+  Text,
+  Container,
+  Link as ChakraLink,
+  Heading,
+  Table,
+  Grid,
+  GridItem,
+  Box,
+  Span,
+  TimelineRoot,
+  TimelineConnector,
+  TimelineContent,
+  TimelineTitle,
+  TimelineDescription,
+  TimelineItem
+} from "@chakra-ui/react"
+import {
+  LuCalendarDays,
+  LuDices,
+  LuExternalLink,
+  LuPackage,
+  LuPackageCheck,
+  LuPackagePlus,
+  LuPackageX,
+} from "react-icons/lu";
 
 const items = [
   { id: 1, name: "Arroz (5kg)", category: "Alimentos", price: 25, min: 20, max: 30 },
@@ -107,7 +131,7 @@ export default function Home() {
             ))}
           </GridItem>
 
-          <GridItem colSpan={4}>
+          <GridItem colSpan={3}>
             <Table.ScrollArea
               rounded="none"
               border={'none'}
@@ -142,7 +166,88 @@ export default function Home() {
               </Table.Root>
             </Table.ScrollArea>
           </GridItem>
-        </Grid>
+
+          <GridItem colSpan={1}>
+            <Heading pl={3} mb={2} color={'gray'} display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
+              <NextLink href="#">Transações</NextLink>
+              <NextLink href="#"><LuPackagePlus /></NextLink>
+            </Heading>
+            <TimelineRoot maxW="350px" pl={3}>
+              <TimelineItem >
+                <TimelineConnector mt={1}>
+                  <LuPackageX />
+                </TimelineConnector>
+                <TimelineContent ml={-2}>
+                  <TimelineTitle textStyle="md">Transação Recusada</TimelineTitle>
+                  <TimelineDescription color={'gray'} fontSize={'sm'} pb={0}>Transação recusada por falta de comprovante.</TimelineDescription>
+                  <TimelineDescription>03 Mar 2025, 23:25</TimelineDescription>
+                </TimelineContent>
+              </TimelineItem>
+
+              <TimelineItem>
+                <TimelineConnector mt={1}>
+                  <LuPackageCheck />
+                </TimelineConnector>
+                <TimelineContent ml={-2}>
+                  <TimelineTitle textStyle="md">Transação Aprovada</TimelineTitle>
+                  <TimelineDescription>03 Mar 2025, 23:23</TimelineDescription>
+                </TimelineContent>
+              </TimelineItem>
+
+              <TimelineItem >
+                <TimelineConnector mt={1}>
+                  <LuPackageX />
+                </TimelineConnector>
+                <TimelineContent ml={-2}>
+                  <TimelineTitle textStyle="md">Transação Recusada</TimelineTitle>
+                  <TimelineDescription color={'gray'} fontSize={'sm'} pb={0}>Transação recusada por falta de comprovante.</TimelineDescription>
+                  <TimelineDescription>03 Mar 2025, 23:25</TimelineDescription>
+                </TimelineContent>
+              </TimelineItem>
+
+              <TimelineItem>
+                <TimelineConnector mt={1}>
+                  <LuPackageCheck />
+                </TimelineConnector>
+                <TimelineContent ml={-2}>
+                  <TimelineTitle textStyle="md">Transação Aprovada</TimelineTitle>
+                  <TimelineDescription>03 Mar 2025, 23:23</TimelineDescription>
+                </TimelineContent>
+              </TimelineItem>
+
+              <TimelineItem >
+                <TimelineConnector mt={1}>
+                  <LuPackageX />
+                </TimelineConnector>
+                <TimelineContent ml={-2}>
+                  <TimelineTitle textStyle="md">Transação Recusada</TimelineTitle>
+                  <TimelineDescription color={'gray'} fontSize={'sm'} pb={0}>Transação recusada por falta de comprovante.</TimelineDescription>
+                  <TimelineDescription>03 Mar 2025, 23:25</TimelineDescription>
+                </TimelineContent>
+              </TimelineItem>
+
+              <TimelineItem>
+                <TimelineConnector mt={1}>
+                  <LuPackageCheck />
+                </TimelineConnector>
+                <TimelineContent ml={-2}>
+                  <TimelineTitle textStyle="md">Transação Aprovada</TimelineTitle>
+                  <TimelineDescription>03 Mar 2025, 23:23</TimelineDescription>
+                </TimelineContent>
+              </TimelineItem>
+
+              <TimelineItem>
+                <TimelineConnector mt={1}>
+                  <LuPackage />
+                </TimelineConnector>
+                <TimelineContent ml={-2}>
+                  <TimelineTitle textStyle="md">Nova Transação Recebida</TimelineTitle>
+                  <TimelineDescription>03 Mar 2025, 23:20</TimelineDescription>
+                </TimelineContent>
+              </TimelineItem>
+            </TimelineRoot>
+          </GridItem>
+        </Grid >
       </Container >
     </>
   )
