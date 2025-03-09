@@ -1,49 +1,29 @@
 import NextLink from "next/link"
-import {
-  Card,
-  Container,
-  Link as ChakraLink,
-  Heading,
-  Table,
-  Grid,
-  GridItem,
-  TimelineRoot,
-  TimelineConnector,
-  TimelineContent,
-  TimelineTitle,
-  TimelineDescription,
-  TimelineItem
-} from "@chakra-ui/react"
-import {
-  LuExternalLink,
-  LuPackage,
-  LuPackageCheck,
-  LuPackagePlus,
-  LuPackageX,
-} from "react-icons/lu";
+import { Card, Container, Link as ChakraLink, Table, Grid, GridItem } from "@chakra-ui/react"
+import { LuExternalLink } from "react-icons/lu";
 import Menu from "@/components/menu";
 
 const items = [
-  { id: 1, name: "Arroz (5kg)", category: "Alimentos", price: 25, min: 20, max: 30 },
-  { id: 2, name: "Feijão (1kg)", category: "Alimentos", price: 8, min: 6, max: 12 },
-  { id: 3, name: "Óleo de soja (900ml)", category: "Alimentos", price: 10, min: 8, max: 14 },
-  { id: 4, name: "Açúcar (5kg)", category: "Alimentos", price: 20, min: 18, max: 25 },
-  { id: 5, name: "Leite (1L)", category: "Alimentos", price: 6, min: 5, max: 8 },
-  { id: 6, name: "Café (500g)", category: "Alimentos", price: 15, min: 12, max: 18 },
-  { id: 7, name: "Pão francês (1kg)", category: "Alimentos", price: 15, min: 12, max: 18 },
-  { id: 8, name: "Carne bovina (1kg)", category: "Carnes", price: 40, min: 35, max: 50 },
-  { id: 9, name: "Frango (1kg)", category: "Carnes", price: 18, min: 15, max: 22 },
-  { id: 10, name: "Ovos (dúzia)", category: "Alimentos", price: 12, min: 10, max: 15 },
-  { id: 11, name: "Batata (1kg)", category: "Hortifruti", price: 8, min: 6, max: 12 },
-  { id: 12, name: "Tomate (1kg)", category: "Hortifruti", price: 10, min: 8, max: 14 },
-  { id: 13, name: "Cebola (1kg)", category: "Hortifruti", price: 7, min: 5, max: 10 },
-  { id: 14, name: "Banana (1kg)", category: "Hortifruti", price: 8, min: 6, max: 12 },
-  { id: 15, name: "Sabão em pó (1kg)", category: "Limpeza", price: 18, min: 15, max: 22 },
-  { id: 16, name: "Detergente (500ml)", category: "Limpeza", price: 4, min: 3, max: 6 },
-  { id: 17, name: "Papel higiênico (4 rolos)", category: "Higiene", price: 10, min: 8, max: 14 },
-  { id: 18, name: "Creme dental (90g)", category: "Higiene", price: 6, min: 5, max: 9 },
-  { id: 19, name: "Sabonete (90g)", category: "Higiene", price: 3, min: 2, max: 5 },
-  { id: 20, name: "Shampoo (350ml)", category: "Higiene", price: 15, min: 12, max: 20 }
+  { id: 1, name: "Arroz (5kg)", category: "Alimentos", variation: 0.2, price: 25, min: 20, max: 30 },
+  { id: 2, name: "Feijão (1kg)", category: "Alimentos", variation: 2, price: 8, min: 6, max: 12 },
+  { id: 3, name: "Óleo de soja (900ml)", category: "Alimentos", variation: 1, price: 10, min: 8, max: 14 },
+  { id: 4, name: "Açúcar (5kg)", category: "Alimentos", variation: 0.4, price: 20, min: 18, max: 25 },
+  { id: 5, name: "Leite (1L)", category: "Alimentos", variation: 1.2, price: 6, min: 5, max: 8 },
+  { id: 6, name: "Café (500g)", category: "Alimentos", variation: 2.9, price: 15, min: 12, max: 18 },
+  { id: 7, name: "Pão francês (1kg)", category: "Alimentos", variation: 0.2, price: 15, min: 12, max: 18 },
+  { id: 8, name: "Carne bovina (1kg)", category: "Carnes", variation: 0.2, price: 40, min: 35, max: 50 },
+  { id: 9, name: "Frango (1kg)", category: "Carnes", variation: 0.2, price: 18, min: 15, max: 22 },
+  { id: 10, name: "Ovos (dúzia)", category: "Alimentos", variation: 0.2, price: 12, min: 10, max: 15 },
+  { id: 11, name: "Batata (1kg)", category: "Hortifruti", variation: 0.2, price: 8, min: 6, max: 12 },
+  { id: 12, name: "Tomate (1kg)", category: "Hortifruti", variation: 0.2, price: 10, min: 8, max: 14 },
+  { id: 13, name: "Cebola (1kg)", category: "Hortifruti", variation: 0.2, price: 7, min: 5, max: 10 },
+  { id: 14, name: "Banana (1kg)", category: "Hortifruti", variation: 0.2, price: 8, min: 6, max: 12 },
+  { id: 15, name: "Sabão em pó (1kg)", category: "Limpeza", variation: 0.2, price: 18, min: 15, max: 22 },
+  { id: 16, name: "Detergente (500ml)", category: "Limpeza", variation: 0.2, price: 4, min: 3, max: 6 },
+  { id: 17, name: "Papel higiênico (4 rolos)", category: "Higiene", variation: 0.2, price: 10, min: 8, max: 14 },
+  { id: 18, name: "Creme dental (90g)", category: "Higiene", variation: 0.2, price: 6, min: 5, max: 9 },
+  { id: 19, name: "Sabonete (90g)", category: "Higiene", variation: 0.2, price: 3, min: 2, max: 5 },
+  { id: 20, name: "Shampoo (350ml)", category: "Higiene", variation: 0.2, price: 15, min: 12, max: 20 }
 ];
 
 const news = [
@@ -63,6 +43,7 @@ export default function Home() {
             {news.map((item) => (
               <Card.Root
                 maxWidth="350px"
+                minWidth="250px"
                 rounded={'none'}
                 borderBottom={'none'}
                 key={item.id}
@@ -93,7 +74,7 @@ export default function Home() {
             ))}
           </GridItem>
 
-          <GridItem colSpan={3}>
+          <GridItem colSpan={4}>
             <Table.ScrollArea
               rounded="none"
               border={'none'}
@@ -119,7 +100,7 @@ export default function Home() {
                         </ChakraLink>
                       </Table.Cell>
                       <Table.Cell>{item.category}</Table.Cell>
-                      <Table.Cell>R$ {item.price}</Table.Cell>
+                      <Table.Cell>R$ {item.price} (+{item.variation}%)</Table.Cell>
                       <Table.Cell textAlign="end">R$ {item.price}</Table.Cell>
                       <Table.Cell textAlign="left">R$ {item.price}</Table.Cell>
                     </Table.Row>
@@ -129,7 +110,7 @@ export default function Home() {
             </Table.ScrollArea>
           </GridItem>
 
-          <GridItem colSpan={1}>
+          {/* <GridItem colSpan={1}>
             <Heading pl={3} mb={2} color={'gray'} display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
               <NextLink href="/tx">Transações</NextLink>
               <NextLink href="#"><LuPackagePlus /></NextLink>
@@ -208,7 +189,7 @@ export default function Home() {
                 </TimelineContent>
               </TimelineItem>
             </TimelineRoot>
-          </GridItem>
+          </GridItem> */}
         </Grid >
       </Container >
     </>
