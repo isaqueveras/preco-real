@@ -1,6 +1,8 @@
 import { Box, Link as ChakraLink, Container, Heading, Span, Text } from "@chakra-ui/react";
-import { LuCalendarDays, LuDices } from "react-icons/lu";
+import { LuDices } from "react-icons/lu";
 import NextLink from "next/link"
+
+import Filters from "./filters";
 
 export default function Menu() {
   return (
@@ -15,7 +17,7 @@ export default function Menu() {
           my={3}
           display={'flex'}
           justifyContent={'space-between'}
-          alignItems={'center'}
+          alignItems={'end'}
         >
           <Box>
             <ChakraLink asChild variant="underline">
@@ -32,17 +34,7 @@ export default function Menu() {
             </ChakraLink>
             <Text color={{ base: 'gray.400', _dark: 'gray.500' }}>Monitor de preços dos alimentos no Brasil</Text>
           </Box>
-          <Box textAlign={'end'}>
-            <Heading fontSize={'md'} color={'gray.400'}
-              display={'flex'}
-              justifyItems={'center'}
-              alignItems={'center'}
-            >
-              <LuCalendarDays />
-              <Span ml={1}>03 de Março de 2025 · 20:19</Span>
-            </Heading>
-            <Text fontSize={'sm'} color={'gray.500'}>Ultima atualização</Text>
-          </Box>
+          <Filters />
         </Box>
       </Container>
     </>
