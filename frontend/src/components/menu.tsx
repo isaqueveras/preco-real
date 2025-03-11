@@ -1,4 +1,4 @@
-import { Box, Link as ChakraLink, Container, Heading, Span, Text } from "@chakra-ui/react";
+import { Box, Button, Link as ChakraLink, Container, Heading, Span, Text } from "@chakra-ui/react";
 import { LuDices } from "react-icons/lu";
 import NextLink from "next/link"
 
@@ -34,7 +34,12 @@ export default function Menu() {
             </ChakraLink>
             <Text color={{ base: 'gray.400', _dark: 'gray.500' }}>Monitor de preços dos alimentos no Brasil</Text>
           </Box>
-          <Filters />
+          <Box>
+            <NextLink href="https://github.com/isaqueveras/preco-real" target="_blank">
+              <Button variant="plain" size={'md'}>Enviar Comprovante</Button>
+            </NextLink>
+            <Filters />
+          </Box>
         </Box>
       </Container>
     </>

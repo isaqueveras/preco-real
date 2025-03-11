@@ -21,7 +21,7 @@ export default function Filters() {
   return (
     <Dialog.Root size={'xs'}>
       <Dialog.Trigger asChild>
-        <Button variant="ghost" size={'md'}>Usar filtros</Button>
+        <Button variant="ghost" size={'md'}>Filtros</Button>
       </Dialog.Trigger>
 
       <Portal>
