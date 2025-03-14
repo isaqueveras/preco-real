@@ -1,6 +1,7 @@
 package consulta
 
 type PrincipaisProdutosRes struct {
+	ID        string  `json:"id"`
 	Produto   string  `json:"produto"`
 	Categoria string  `json:"categoria"`
 	Preco     float64 `json:"preco"`
