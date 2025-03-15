@@ -3,12 +3,6 @@ import { Card, Container, Link as ChakraLink, Table, Grid, GridItem, Tag, Box, T
 import { LuGlobe } from "react-icons/lu";
 import Menu from "@/components/menu";
 
-const news = [
-  { id: 1, title: "Tomate tem alta de 15% no mês de fevereiro", content: "O preço do tomate subiu devido à alta demanda e às condições climáticas desfavoráveis.", source: "g1.globo.com" },
-  { id: 2, title: "Leite mais barato com aumento da produção", content: "A produção de leite cresceu 8%, resultando em uma leve queda nos preços.", source: "uol.com.br" },
-  { id: 3, title: "Feijão tem queda de preço após safra recorde", content: "A colheita deste ano superou expectativas, reduzindo os custos do feijão nos mercados.", source: "cnnbrasil.com.br" },
-]
-
 export const revalidate = 60
 
 interface Geral {
@@ -32,19 +26,30 @@ interface Produto {
   max: number
 }
 
+interface Noticia {
+  id: string
+  titulo: string
+  descricao: string
+  fonte: string
+}
+
 export default async function Page() {
-  const data = await fetch('http://localhost:8080/v1/consulta/obter_principais_produtos')
-  const dados: Geral = await data.json()
+  const produtos = await fetch('http://localhost:8080/v1/consulta/obter_principais_produtos')
+  const dadosProdutos: Geral = await produtos.json()
+
+  const noticias = await fetch('http://localhost:8080/v1/consulta/obter_principais_noticias')
+  const dadosNoticias: Noticia[] = await noticias.json()
+
   return (
     <>
       <Menu />
       <Container px="16" colorPalette={'pink'}>
         <Grid templateColumns="repeat(5, 1fr)" gap={2}>
           <GridItem colSpan={1}>
-            {news.map((item) => (
+            {dadosNoticias.map((item: Noticia) => (
               <Card.Root
                 maxWidth="350px"
-                minWidth="250px"
+                minWidth="280px"
                 rounded={'none'}
                 borderBottom={'none'}
                 key={item.id}
@@ -55,11 +60,11 @@ export default async function Page() {
                 <Card.Body gap="2">
                   <Card.Title fontSize={'md'}>
                     <ChakraLink asChild variant="underline">
-                      <NextLink href={`?${item.title}`}>{item.title}</NextLink></ChakraLink>
+                      <NextLink href={`?${item.titulo}`}>{item.titulo}</NextLink></ChakraLink>
                   </Card.Title>
-                  <Card.Description fontSize={'sm'}>{item.content}</Card.Description>
+                  <Card.Description fontSize={'sm'}>{item.descricao}</Card.Description>
                   <Card.Footer p={0} fontSize={'sm'} color={'gray'}>
-                    <LuGlobe />{item.source}
+                    <LuGlobe />{item.fonte}
                   </Card.Footer>
                 </Card.Body>
               </Card.Root>
@@ -84,7 +89,7 @@ export default async function Page() {
                 </Table.Header>
 
                 <Table.Body padding={1} >
-                  {dados.produtos.map((item: Produto) => (
+                  {dadosProdutos.produtos.map((item: Produto) => (
                     <Table.Row key={item.id}>
                       <Table.Cell fontWeight={'normal'}>
                         <ChakraLink asChild variant="plain">
@@ -107,11 +112,11 @@ export default async function Page() {
             </Table.ScrollArea>
 
             <Box display={'flex'} my={4} justifyContent={'space-between'}>
-              {dados.regiao && (
-                <Text fontSize={'sm'} color={'gray.500'}>Região: {dados.regiao}</Text>
+              {dadosProdutos.regiao && (
+                <Text fontSize={'sm'} color={'gray.500'}>Região: {dadosProdutos.regiao}</Text>
               )}
               <Text fontSize={'sm'} color={'gray.500'}>
-                Dados do dia {dados.periodo.data_inicial} à {dados.periodo.data_final}
+                Dados do dia {dadosProdutos.periodo.data_inicial} à {dadosProdutos.periodo.data_final}
               </Text>
             </Box>
           </GridItem>
