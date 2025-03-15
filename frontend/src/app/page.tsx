@@ -11,7 +11,19 @@ const news = [
 
 export const revalidate = 60
 
+interface Geral {
+  produtos: Produto[]
+  periodo: Periodo
+  regiao?: string
+}
+
+interface Periodo {
+  data_inicial: string
+  data_final: string
+}
+
 interface Produto {
+  id: string
   produto: string
   categoria: string
   preco: number
@@ -22,7 +34,7 @@ interface Produto {
 
 export default async function Page() {
   const data = await fetch('http://localhost:8080/v1/consulta/obter_principais_produtos')
-  const produtos: Produto[] = await data.json()
+  const dados: Geral = await data.json()
   return (
     <>
       <Menu />
@@ -72,7 +84,7 @@ export default async function Page() {
                 </Table.Header>
 
                 <Table.Body padding={1} >
-                  {produtos.map((item: any) => (
+                  {dados.produtos.map((item: Produto) => (
                     <Table.Row key={item.id}>
                       <Table.Cell fontWeight={'normal'}>
                         <ChakraLink asChild variant="plain">
@@ -95,8 +107,12 @@ export default async function Page() {
             </Table.ScrollArea>
 
             <Box display={'flex'} my={4} justifyContent={'space-between'}>
-              <Text fontSize={'sm'} color={'gray.500'}>Região: Mombaça no Ceará</Text>
-              <Text fontSize={'sm'} color={'gray.500'}>Dados do dia 03/03/25 à 05/03/25</Text>
+              {dados.regiao && (
+                <Text fontSize={'sm'} color={'gray.500'}>Região: {dados.regiao}</Text>
+              )}
+              <Text fontSize={'sm'} color={'gray.500'}>
+                Dados do dia {dados.periodo.data_inicial} à {dados.periodo.data_final}
+              </Text>
             </Box>
           </GridItem>
         </Grid>
