@@ -38,19 +38,19 @@ func ObterPrincipaisNoticias() (*[]Noticia, error) {
 			ID:        "1",
 			Titulo:    "Tomate tem alta de 15% no mês de fevereiro",
 			Descricao: "O preço do tomate subiu devido à alta demanda e às condições climáticas desfavoráveis.",
-			Fonte:     "g1.globo.com",
+			Fonte:     "https://g1.globo.com",
 		},
 		{
 			ID:        "2",
 			Titulo:    "Leite mais barato com aumento da produção",
 			Descricao: "A produção de leite cresceu 8%, resultando em uma leve queda nos preços.",
-			Fonte:     "uol.com.br",
+			Fonte:     "https://uol.com.br",
 		},
 		{
 			ID:        "3",
 			Titulo:    "Feijão tem queda de preço após safra recorde",
 			Descricao: "A colheita deste ano superou expectativas, reduzindo os custos do feijão nos mercados.",
-			Fonte:     "cnnbrasil.com.br",
+			Fonte:     "https://cnnbrasil.com.br",
 		},
 	}, nil
 }

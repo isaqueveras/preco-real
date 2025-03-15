@@ -60,7 +60,8 @@ export default async function Page() {
                 <Card.Body gap="2">
                   <Card.Title fontSize={'md'}>
                     <ChakraLink asChild variant="underline">
-                      <NextLink href={`?${item.titulo}`}>{item.titulo}</NextLink></ChakraLink>
+                      <NextLink href={`${item.fonte}`}>{item.titulo}</NextLink>
+                    </ChakraLink>
                   </Card.Title>
                   <Card.Description fontSize={'sm'}>{item.descricao}</Card.Description>
                   <Card.Footer p={0} fontSize={'sm'} color={'gray'}>
