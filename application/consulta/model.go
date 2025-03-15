@@ -20,3 +20,10 @@ type Periodo struct {
 	DataInicial string `json:"data_inicial"`
 	DataFinal   string `json:"data_final"`
 }
+
+type Noticia struct {
+	ID        string `json:"id"`
+	Titulo    string `json:"titulo"`
+	Descricao string `json:"descricao"`
+	Fonte     string `json:"fonte"`
+}
