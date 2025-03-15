@@ -16,3 +16,12 @@ func obterPrincipaisProdutos(ctx *gin.Context) {
 
 	ctx.JSON(http.StatusOK, data)
 }
+
+func obterPrincipaisNoticias(ctx *gin.Context) {
+	data, erro := consulta.ObterPrincipaisNoticias()
+	if erro != nil {
+		ctx.JSON(http.StatusBadRequest, nil)
+		return
+	}
+	ctx.JSON(http.StatusOK, data)
+}

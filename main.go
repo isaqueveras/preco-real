@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"precoreal/interface/consulta"
+	"precoreal/router/consulta"
 
 	"github.com/gin-gonic/gin"
 )
