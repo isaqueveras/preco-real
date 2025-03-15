@@ -76,7 +76,7 @@ export default async function Page() {
             <Table.ScrollArea
               rounded="none"
               border={'none'}
-              maxH={719}
+              maxH={700}
             >
               <Table.Root size="sm" stickyHeader interactive>
                 <Table.Header>
@@ -92,11 +92,7 @@ export default async function Page() {
                 <Table.Body padding={1} >
                   {dadosProdutos.produtos.map((item: Produto) => (
                     <Table.Row key={item.id}>
-                      <Table.Cell fontWeight={'normal'}>
-                        <ChakraLink asChild variant="plain">
-                          <NextLink href={`#produto#${item.produto}`}>{item.produto}</NextLink>
-                        </ChakraLink>
-                      </Table.Cell>
+                      <Table.Cell fontWeight={'normal'}>{item.produto}</Table.Cell>
                       <Table.Cell>{item.categoria}</Table.Cell>
                       <Table.Cell>
                         R$ {item.preco}
