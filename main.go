@@ -2,7 +2,8 @@ package main
 
 import (
 	"log"
-	"precoreal/interface/transacao"
+
+	"precoreal/interface/consulta"
 
 	"github.com/gin-gonic/gin"
 )
@@ -13,7 +14,7 @@ func main() {
 	r := gin.Default()
 	v1 := r.Group("v1")
 
-	transacao.Rota(v1.Group("transaction"))
+	consulta.Rota(v1.Group("consulta"))
 
 	if err := r.Run(); err != nil {
 		panic(err)
