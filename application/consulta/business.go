@@ -28,7 +28,7 @@ func ObterPrincipaisProdutos() (*PrincipaisProdutosRes, error) {
 			{ID: "18", Produto: "Creme dental (90g)", Categoria: "Higiene", Preco: 25.80, Variacao: 2.1, Min: 24.73, Max: 26.83},
 			{ID: "19", Produto: "Sabonete (90g)", Categoria: "Higiene", Preco: 25.80, Variacao: 2.1, Min: 24.73, Max: 26.83},
 			{ID: "20", Produto: "Shampoo (350ml)", Categoria: "Higiene", Preco: 25.80, Variacao: 2.1, Min: 24.73, Max: 26.83},
-			{ID: "21", Produto: "Refrigerante Coca Cola 2L", Categoria: "Bebida", Preco: 14.00, Variacao: 2.1, Min: 10.73, Max: 14.83},
+			{ID: "21", Produto: "Refrigerante Coca-Cola 2L", Categoria: "Bebida", Preco: 14.00, Variacao: 2.1, Min: 10.73, Max: 14.83},
 		},
 	}, nil
 }
