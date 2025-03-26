@@ -8,7 +8,7 @@ import (
 )
 
 func obterPrincipaisProdutos(ctx *gin.Context) {
-	data, erro := consulta.ObterPrincipaisProdutos()
+	data, erro := consulta.ObterPrincipaisProdutos(ctx)
 	if erro != nil {
 		ctx.JSON(http.StatusBadRequest, nil)
 		return
